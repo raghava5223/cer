@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+@theme {
+  --color-registered-green: #10b981;
+  --color-pay-blue: #2563eb;
+}
+
+@layer utilities {
+  .bg-registered-gradient {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  }
+
+  .bg-pay-gradient {
+    background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+  }
+
+  .bg-admin-gradient {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  }
+
+  @keyframes successPulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    }
+
+    70% {
+      box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+  }
+
+  @keyframes payPulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+    }
+
+    70% {
+      box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+    }
+  }
+
+  @keyframes statusPulse {
+    0% {
+      transform: scale(0.95);
+      opacity: 0.8;
+    }
+
+    50% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+
+    100% {
+      transform: scale(0.95);
+      opacity: 0.8;
+    }
+  }
+
+  .animate-success-pulse {
+    animation: successPulse 2s infinite;
+  }
+
+  .animate-pay-pulse {
+    animation: payPulse 2s infinite;
+  }
+
+  .animate-status-pulse {
+    animation: statusPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes bounceSubtle {
+
+    0%,
+    100% {
+      transform: translateY(-5%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+
+    50% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+
+  .animate-bounce-subtle {
+    animation: bounceSubtle 1s infinite;
+  }
+
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #2563eb rgba(15, 23, 42, 0.05);
+    scrollbar-gutter: stable;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 12px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #1d4ed8;
+  }
+}
+
+@keyframes aurora {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  33% {
+    transform: translate(10%, 10%) rotate(120deg);
+  }
+
+  66% {
+    transform: translate(-5%, 15%) rotate(240deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
+
+.animate-aurora {
+  animation: aurora 20s linear infinite;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+/* Payment Modal Animations */
+@keyframes scan-line {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes shield-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.animate-scan {
+  animation: scan-line 3s linear infinite;
+}
+
+.animate-shield-pulse {
+  animation: shield-pulse 2s ease-in-out infinite;
+}
