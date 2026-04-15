@@ -2,6 +2,7 @@ services:
   - type: web
     name: college-event-portal-backend
     env: node
+    plan: free
     rootDir: server
     buildCommand: npm install
     startCommand: node index.js
