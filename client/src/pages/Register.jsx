@@ -22,12 +22,17 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
         try {
+            console.log('Attempting registration with:', { ...formData, password: '***' });
             const { data } = await api.post('/auth/student/register', formData);
             login(data);
             navigate('/student');
         } catch (err) {
-            setError(err.response?.data?.message || 'Registration failed');
+            console.error('Registration error context:', err);
+            const status = err.response?.status;
+            const message = err.response?.data?.message || err.message || 'Registration failed';
+            setError(`${status ? `[Error ${status}] ` : ''}${message}`);
         }
     };
 

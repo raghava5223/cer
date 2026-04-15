@@ -2,6 +2,11 @@
 
 Follow these steps to deploy your MERN stack application for free.
 
+## 🚀 One-Click Deploy (After Pushing to GitHub)
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/raghava5223/cer)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/import?s=https://github.com/raghava5223/cer)
+
 ---
 
 ## 1. Database Setup (MongoDB Atlas)

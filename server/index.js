@@ -17,6 +17,12 @@ const aiRoutes = require('./routes/aiRoutes');
 app.use(cors());
 app.use(express.json());
 
+// Database connection middleware for Serverless
+app.use(async (req, res, next) => {
+    await connectDB();
+    next();
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/registrations', registrationRoutes);
