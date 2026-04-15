@@ -19,8 +19,13 @@ app.use(express.json());
 
 // Database connection middleware for Serverless
 app.use(async (req, res, next) => {
-    await connectDB();
-    next();
+    try {
+        await connectDB();
+        next();
+    } catch (err) {
+        console.error('Database connection failed in middleware:', err.message);
+        res.status(503).json({ message: 'Database connection failed. Please check your MONGO_URI.' });
+    }
 });
 
 app.use('/api/auth', authRoutes);
