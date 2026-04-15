@@ -57,7 +57,10 @@ const registerForEvent = async (req, res) => {
 
     await registration.save();
 
-    // 7. Send confirmation email if paid
+    // 7. Send initial registration received email (NEW)
+    sendRegistrationEmail(req.user.email, req.user.name, event, isPending);
+
+    // 8. Send payment confirmation email if already paid
     if (!isPending) {
         // Populate event details for the email
         const populatedRegistration = await Registration.findById(registration._id).populate('eventId');

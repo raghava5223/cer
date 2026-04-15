@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const { sendRegistrationEmail } = require('../services/emailService');
 
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -98,6 +99,9 @@ const registerStudent = async (req, res) => {
         });
 
         if (user) {
+            // Send welcome registration email (optional simulation of welcome)
+            // sendRegistrationEmail(user.email, user.name, { eventName: 'College Event Portal' }, false);
+
             res.status(201).json({
                 _id: user._id,
                 name: user.name,
